@@ -1,58 +1,52 @@
 import { Component } from '@angular/core';
-import { Race } from './race';
-import { RaceService } from './race.service';
-// import {ToXml} from 'xml2json';
+import { Menu } from './menu';
+import { MenuService } from './menu.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [RaceService]
+  providers: [MenuService]
 })
 export class AppComponent {
   title = 'app works!';
-  heading = "Ultra Racing Schedule";
-  cash = 10000;
-  races: Race[];
+  menu: Menu[];
 
-  constructor(private raceService: RaceService) {
+  constructor(private menuService: MenuService) {
   }
 
   ngOnInit() {
-    this.raceService.getRaces()
-      // .subscribe(data => this.races = data);
-      .subscribe(data => {
-
-      })
+    this.menuService.getMenu()
+      .subscribe(data => this.menu = data)
   }
 
-  totalCost() {
-    let sum = 0;
-    if (this.races) {
-      for (let race of this.races) {
-        if (race.isRacing) sum += race.entryFee;
-      }
-    }
-    return sum;
-  }
-
-  castDate(date) {
-    return new Date(date);
-  }
-
-  cashLeft() {
-    return this.cash - this.totalCost();
-  }
-
-  enterRace(race) {
-    if (this.cashLeft() > race.entryFee) {
-      race.isRacing = true;
-    } else {
-      alert("You don't have enough cash");
-    }
-  }
-
-  cancelRace(race) {
-    race.isRacing = false;
-  }
+  // totalCost() {
+  //   let sum = 0;
+  //   if (this.races) {
+  //     for (let race of this.races) {
+  //       if (race.isRacing) sum += race.entryFee;
+  //     }
+  //   }
+  //   return sum;
+  // }
+  //
+  // castDate(date) {
+  //   return new Date(date);
+  // }
+  //
+  // cashLeft() {
+  //   return this.cash - this.totalCost();
+  // }
+  //
+  // enterRace(race) {
+  //   if (this.cashLeft() > race.entryFee) {
+  //     race.isRacing = true;
+  //   } else {
+  //     alert("You don't have enough cash");
+  //   }
+  // }
+  //
+  // cancelRace(race) {
+  //   race.isRacing = false;
+  // }
 }
