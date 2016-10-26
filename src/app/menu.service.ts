@@ -15,7 +15,7 @@ export class MenuService {
     let parser = new xml2js.Parser({explicitArray: false});
 
     return new Observable(observer => {
-      this.http.get('app/simple.xml').subscribe(response => {
+      this.http.get('assets/simple.xml').subscribe(response => {
 
         parser.parseString(response.text(), (err, result) => {
           // console.log(typeof  result.breakfast_menu.food);
