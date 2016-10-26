@@ -1,9 +1,8 @@
 <h1>
-  {{title}}
+  <a [href]="title">{{title}}</a>
 </h1>
 
 <div class="container">
-  <h1>{{heading}}</h1>
   <ul>
     <li *ngFor="let item of menu">
       <p>Name: {{item.name}}</p>

@@ -9,7 +9,7 @@ import { MenuService } from './menu.service';
   providers: [MenuService]
 })
 export class AppComponent {
-  title = 'app works!';
+  title = 'http://www.w3schools.com/xml/simple.xml';
   menu: Menu[];
 
   constructor(private menuService: MenuService) {
